@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Management;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,28 +13,23 @@ namespace Unity.Template.VR
 {
     internal class XRPlatformControllerSetup : MonoBehaviour
     {
-        [SerializeField]
-        GameObject m_LeftController;
+        [SerializeField] private GameObject m_LeftController;
 
-        [SerializeField]
-        GameObject m_RightController;
+        [SerializeField] private GameObject m_RightController;
         
-        [SerializeField]
-        GameObject m_LeftControllerOculusPackage;
+        [SerializeField] private GameObject m_LeftControllerOculusPackage;
 
-        [SerializeField]
-        GameObject m_RightControllerOculusPackage;
+        [SerializeField] private GameObject m_RightControllerOculusPackage;
 
-        void Start()
+        private void Start()
         {
 #if UNITY_EDITOR
-            var loaders = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(BuildTargetGroup.Standalone).Manager.activeLoaders;
+            IReadOnlyList<XRLoader> loaders = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(BuildTargetGroup.Standalone).Manager.activeLoaders;
 #else
-            var loaders = XRGeneralSettings.Instance.Manager.activeLoaders;
+            IReadOnlyList<XRLoader> loaders = XRGeneralSettings.Instance.Manager.activeLoaders;
 #endif
             
-            foreach (var loader in loaders)
-            {
+            foreach (XRLoader loader in loaders)
                 if (loader.name.Equals("Oculus Loader"))
                 {
                     m_RightController.SetActive(false);
@@ -40,7 +37,6 @@ namespace Unity.Template.VR
                     m_RightControllerOculusPackage.SetActive(true);
                     m_LeftControllerOculusPackage.SetActive(true);
                 }
-            }
         }
     }
 }
