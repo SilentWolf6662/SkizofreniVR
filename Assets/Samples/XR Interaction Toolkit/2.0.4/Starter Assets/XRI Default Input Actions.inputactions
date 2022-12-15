@@ -1093,6 +1093,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "XRI Velocity Tracking",
+            "id": "c3cf9b61-b25a-4b1b-99e2-40baf4c2f08a",
+            "actions": [
+                {
+                    "name": "Right Velocity",
+                    "type": "Value",
+                    "id": "c66af37f-f269-4346-a4a4-ce537e55db2e",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Left Velocity",
+                    "type": "Value",
+                    "id": "356ab315-871a-4563-ab88-3bc0cbceb45d",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b28cfc11-b09e-41fa-8d4a-0b4c97a96b1c",
+                    "path": "<XRController>{RightHand}/deviceVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Right Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d1f31f4-4b3a-4c2a-b20c-ce5d91b691dd",
+                    "path": "<ViveController>{RightHand}/devicePose/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "025bcb3d-c991-4e80-9ab2-f37808934477",
+                    "path": "<XRController>{LeftHand}/deviceVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Left Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bcabaed-ef82-468d-9b41-1ceeb4264d61",
+                    "path": "<ViveController>{LeftHand}/devicePose/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Velocity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

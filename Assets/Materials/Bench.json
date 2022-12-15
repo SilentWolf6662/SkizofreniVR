@@ -1,0 +1,89 @@
+{
+    "nodeDatas": [
+        {
+            "location": [
+                10.0,
+                300.0
+            ],
+            "name": "NULL.ShaderNodeBsdfPrincipled.Principled BSDF"
+        },
+        {
+            "location": [
+                300.0,
+                300.0
+            ],
+            "name": "NULL.ShaderNodeOutputMaterial.Material Output"
+        },
+        {
+            "connections0Name": [
+                "Vector"
+            ],
+            "connections0NodeName": [
+                "ShaderNodeTexNoise.Noise Texture"
+            ],
+            "connections1Name": [],
+            "connections1NodeName": [],
+            "connections2Name": [],
+            "connections2NodeName": [],
+            "connections3Name": [],
+            "connections3NodeName": [],
+            "connections4Name": [],
+            "connections4NodeName": [],
+            "location": [
+                -933.2804565429688,
+                183.35940551757812
+            ],
+            "name": "ShaderNodeTexCoord.Texture Coordinate"
+        },
+        {
+            "connections0Name": [
+                "Fac"
+            ],
+            "connections0NodeName": [
+                "ShaderNodeValToRGB.ColorRamp"
+            ],
+            "connections1Name": [],
+            "connections1NodeName": [],
+            "location": [
+                -674.0604858398438,
+                202.15597534179688
+            ],
+            "name": "ShaderNodeTexNoise.Noise Texture",
+            "properties": [
+                "3D",
+                "0.0",
+                "20.0",
+                "5.0",
+                "0.6000000238418579",
+                "0.0"
+            ]
+        },
+        {
+            "connections0Name": [
+                "Base Color"
+            ],
+            "connections0NodeName": [
+                "ShaderNodeBsdfPrincipled.Principled BSDF"
+            ],
+            "location": [
+                -398.4118347167969,
+                192.0662078857422
+            ],
+            "name": "ShaderNodeValToRGB.ColorRamp",
+            "properties": [
+                "0.0-0.0-0.0-1.0-0.0|0.22322800755500793-0.22322800755500793-0.22322800755500793-1.0-0.42181870341300964|",
+                "RGB",
+                "LINEAR",
+                "NEAR",
+                "0.5"
+            ]
+        },
+        {
+            "name": "EXTRA",
+            "properties": [
+                "True",
+                "True"
+            ]
+        }
+    ]
+}
