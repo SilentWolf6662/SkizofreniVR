@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -6,12 +7,15 @@ public class VelocityInteractable : XRGrabInteractable
     private ControllerVelocity controllerVelocity = null;
     public OVRInput.Controller controller;
     private MeshRenderer meshRenderer = null;
+    public Vector3 velocity;
+    private Rigidbody rb;
 
     protected override void Awake()
     {
         base.Awake();
         meshRenderer = GetComponent<MeshRenderer>();
         controller = OVRInput.Controller.None;
+        rb = GetComponent<Rigidbody>();
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -26,6 +30,7 @@ public class VelocityInteractable : XRGrabInteractable
         base.OnSelectExited(args);
         controllerVelocity = null;
         controller = OVRInput.Controller.None;
+        ApplyVelocityAtUngrab();
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -34,26 +39,24 @@ public class VelocityInteractable : XRGrabInteractable
 
         if (isSelected)
         {
-            UpdateColorBasedOnVelocity();
+            //UpdateColorBasedOnVelocity();
             //print($"{controllerVelocity} | {controllerVelocity.Velocity}");
         }
     }
 
     private void UpdateColorBasedOnVelocity()
     {
-        Vector3 velocity = controllerVelocity ? controllerVelocity.Velocity : Vector3.zero;
         Color color = new(velocity.x, velocity.y, velocity.z);
         meshRenderer.material.color = color;
     }
 
-    public GameObject RightHandAnchor;
-    private Vector3 lastPosition;
-
     private void FixedUpdate()
     {
-        var velocity = OVRInput.GetLocalControllerAngularVelocity(controller);
-        print($"Velocity {velocity}");
+        velocity = OVRInput.GetLocalControllerVelocity(controller);
+        var velocityV2 = OVRInput.GetLocalControllerAngularVelocity(controller);
+        var velocityV3 = OVRInput.GetLocalControllerVelocity(controller) + OVRInput.GetLocalControllerAngularVelocity(controller);
+        print($"VelocityV1 {velocity} | VelocityV2 {velocityV2} | VelocityV3 {velocityV3} ");
         // Debug.Log($"Speed: {string.Format("0:0.00", speed)}");
-
     }
+    private void ApplyVelocityAtUngrab() => rb.velocity = velocity * 2;
 }
