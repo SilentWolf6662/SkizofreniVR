@@ -5,6 +5,8 @@ using UnityEngine.Timeline;
 
 
   [TrackBindingType(typeof(TextMesh))]
+  [TrackClipType(typeof(SubtitleClip))]
+
 public class SubtitleTrack : TrackAsset
 
 {
